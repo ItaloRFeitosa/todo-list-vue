@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Tasks from "../views/Tasks.vue";
 import AllTasks from "../components/AllTasks.vue";
+import DoneTasks from "../components/DoneTasks.vue";
 import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
@@ -21,6 +22,11 @@ const routes = [
         path: "all",
         name: "all-tasks",
         component: AllTasks
+      },
+      {
+        path: "done",
+        name: "done-tasks",
+        component: DoneTasks
       }
     ]
   }
