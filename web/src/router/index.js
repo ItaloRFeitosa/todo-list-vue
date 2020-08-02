@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Tasks from "../views/Tasks.vue";
+import AllTasks from "../components/AllTasks.vue";
 import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
@@ -14,7 +15,14 @@ const routes = [
   {
     path: "/:name/tasks",
     name: "tasks",
-    component: Tasks
+    component: Tasks,
+    children: [
+      {
+        path: "all",
+        name: "all-tasks",
+        component: AllTasks
+      }
+    ]
   }
 ];
 

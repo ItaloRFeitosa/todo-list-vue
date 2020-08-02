@@ -4,7 +4,7 @@
       <h1>Hey, {{ $route.params.name }}</h1>
       <h4>
         You have
-        <strong>7 tasks</strong> to complete
+        <strong>{{ notDoneTasksCount }} tasks</strong> to complete
       </h4>
       <div class="tabs">
         <h4 class="selected">All</h4>
@@ -12,7 +12,9 @@
         <h4>Completed</h4>
       </div>
     </header>
-    <div class="tasks"></div>
+    <transition>
+      <router-view></router-view>
+    </transition>
     <add-task />
   </div>
 </template>
@@ -25,8 +27,21 @@ export default {
   components: {
     AddTask
   },
+
+  data() {
+    return {
+      tasks: []
+    };
+  },
+
   mounted() {
-    console.log(this.$store.state.tasks[0]);
+    this.$store.dispatch("getTasksFromStorage");
+  },
+
+  computed: {
+    notDoneTasksCount() {
+      return this.$store.getters.notDoneTasksCount;
+    }
   }
 };
 </script>
@@ -41,7 +56,7 @@ $background: #fbfbfb;
 .tasks-container {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: min(500px, 100%);
   header {
     width: 100%;
