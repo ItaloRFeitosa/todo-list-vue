@@ -3,7 +3,7 @@
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
-    </div> -->
+    </div>-->
     <router-view />
   </div>
 </template>
@@ -44,13 +44,13 @@ button {
   display: flex;
   outline: none;
   align-items: center;
-
-  svg {
-    margin-left: 8px;
-  }
+  cursor: pointer;
 }
 
+textarea,
 input {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-size: 14px;
   padding: 8px 0;
   border: none;
   border-bottom: 1px solid $light-color;
@@ -60,7 +60,6 @@ input {
   font-weight: bold;
   transition: 0.4s linear;
   background: transparent;
-
   &:focus {
     border-bottom: 1px solid $base-color;
   }
@@ -69,16 +68,7 @@ input {
   }
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+textarea {
+  resize: none;
 }
 </style>
