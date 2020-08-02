@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Tasks from "../views/Tasks.vue";
 import AllTasks from "../components/AllTasks.vue";
 import DoneTasks from "../components/DoneTasks.vue";
+import NotDoneTasks from "../components/NotDoneTasks.vue";
 import Login from "../views/Login.vue";
 
 Vue.use(VueRouter);
@@ -27,6 +28,11 @@ const routes = [
         path: "done",
         name: "done-tasks",
         component: DoneTasks
+      },
+      {
+        path: "not-done",
+        name: "not-done-tasks",
+        component: NotDoneTasks
       }
     ]
   }
