@@ -2,7 +2,10 @@
   <div class="tasks-container">
     <header>
       <h1>Hey, {{ $route.params.name }}</h1>
-      <h4>You have <strong>7 tasks</strong> to complete</h4>
+      <h4>
+        You have
+        <strong>7 tasks</strong> to complete
+      </h4>
       <div class="tabs">
         <h4 class="selected">All</h4>
         <h4>Not Completed</h4>
@@ -10,16 +13,21 @@
       </div>
     </header>
     <div class="tasks"></div>
-
-    <button>Add a new task</button>
+    <add-task />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import AddTask from "@/components/AddTask.vue";
 export default {
-  name: "tasks"
+  name: "tasks",
+  components: {
+    AddTask
+  },
+  mounted() {
+    console.log(this.$store.state.tasks[0]);
+  }
 };
 </script>
 
@@ -59,14 +67,6 @@ $background: #fbfbfb;
         }
       }
     }
-  }
-
-  button {
-    position: fixed;
-
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%);
   }
 }
 </style>
