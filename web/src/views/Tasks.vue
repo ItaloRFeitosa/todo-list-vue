@@ -103,6 +103,7 @@ $background: #fbfbfb;
         margin-right: 16px;
         padding: 4px 0;
         transition: color 0.2s linear;
+        cursor: pointer;
         &.selected {
           color: $base-color;
           border-bottom: 2px solid $base-color;
