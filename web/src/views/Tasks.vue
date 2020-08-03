@@ -7,12 +7,27 @@
         <strong>{{ notDoneTasksCount }} tasks</strong> to complete
       </h4>
       <div class="tabs">
-        <h4 class="selected">All</h4>
-        <h4>Not Completed</h4>
-        <h4>Completed</h4>
+        <h4
+          v-bind:class="{ selected: checkPathName('all-tasks') }"
+          v-on:click="() => setRoute('all-tasks')"
+        >
+          All
+        </h4>
+        <h4
+          v-bind:class="{ selected: checkPathName('not-done-tasks') }"
+          v-on:click="() => setRoute('not-done-tasks')"
+        >
+          Not Completed
+        </h4>
+        <h4
+          v-bind:class="{ selected: checkPathName('done-tasks') }"
+          v-on:click="() => setRoute('done-tasks')"
+        >
+          Completed
+        </h4>
       </div>
     </header>
-    <transition>
+    <transition name="slide-fade">
       <router-view></router-view>
     </transition>
     <add-task />
@@ -32,6 +47,17 @@ export default {
     return {
       tasks: []
     };
+  },
+
+  methods: {
+    setRoute(routeName) {
+      console.log(routeName);
+      this.$router.push({ name: routeName });
+    },
+
+    checkPathName(routeName) {
+      return routeName === this.$route.name;
+    }
   },
 
   mounted() {
@@ -76,12 +102,23 @@ $background: #fbfbfb;
       h4 {
         margin-right: 16px;
         padding: 4px 0;
+        transition: color 0.2s linear;
         &.selected {
           color: $base-color;
           border-bottom: 2px solid $base-color;
         }
       }
     }
+  }
+
+  .slide-fade-enter-active {
+    transition: all 0.8s ease;
+  }
+
+  .slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
   }
 }
 </style>
