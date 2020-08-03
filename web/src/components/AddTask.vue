@@ -4,7 +4,7 @@
       <div class="modal">
         <header>
           <h2>Add Task</h2>
-          <v-icon v-on:click="showModal" name="times" />
+          <v-icon v-on:click="toggleModal" name="times" />
         </header>
         <form>
           <input v-model="title" type="text" placeholder="Title of the Task" />
@@ -19,7 +19,7 @@
         <button v-on:click="addTask">Add task</button>
       </div>
     </div>
-    <button v-on:click="showModal">
+    <button v-on:click="toggleModal">
       <v-icon name="plus" scale="0.9" />Add a new task
     </button>
   </div>
@@ -45,7 +45,7 @@ export default {
     "v-icon": Icon
   },
   methods: {
-    showModal() {
+    toggleModal() {
       this.modalIsShown = !this.modalIsShown;
     },
 
@@ -59,6 +59,15 @@ export default {
       };
 
       this.$store.dispatch("addTask", newTask);
+      this.toggleModal();
+    }
+  },
+
+  watch: {
+    modalIsShown() {
+      this.title = "";
+      this.date = "";
+      this.description = "";
     }
   }
 };
