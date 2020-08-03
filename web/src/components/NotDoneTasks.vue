@@ -12,17 +12,10 @@ export default {
   components: {
     TaskCard
   },
-
-  data() {
-    return {
-      tasks: []
-    };
-  },
-  mounted() {
-    this.tasks = this.$store.getters.notDoneTasks;
-  },
-  updated() {
-    this.tasks = this.$store.getters.notDoneTasks;
+  computed: {
+    tasks() {
+      return this.$store.getters.notDoneTasks;
+    }
   }
 };
 </script>

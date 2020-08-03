@@ -13,16 +13,10 @@ export default {
     TaskCard
   },
 
-  data() {
-    return {
-      tasks: []
-    };
-  },
-  mounted() {
-    this.tasks = this.$store.getters.allTasks;
-  },
-  updated() {
-    this.tasks = this.$store.getters.allTasks;
+  computed: {
+    tasks() {
+      return this.$store.getters.allTasks;
+    }
   }
 };
 </script>
